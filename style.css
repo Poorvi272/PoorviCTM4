@@ -20,7 +20,7 @@ video {
   left: 50%;
 
   width: 100vw;
-  height: 100svh;              /* safest viewport unit for mobile */
+  height: 100dvh;              /* safest viewport unit for mobile */
 
   transform: translate(-50%, -50%);
 
@@ -163,17 +163,11 @@ button {
 }
 
 /* ===============================
-   MOBILE RESPONSIVE VIDEO FIX
+   PHONE FIX — FIRST VIDEO ONLY
    =============================== */
-/* @media (max-width: 768px) {
-  video {
-    object-fit: contain; 
+@media (max-width: 768px) {
+  #intro-video-1 {
+    object-fit: contain;   /* no crop */
+    background: black;     /* intentional borders */
   }
-} */
-
-/* ===============================
-   FIRST VIDEO — NEVER CROP
-   =============================== */
-/* ======================================
-   FIRST VIDEO — HORIZONTAL FIT (NO CROP)
-   ====================================== */
+}
