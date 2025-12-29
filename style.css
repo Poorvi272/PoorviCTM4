@@ -168,4 +168,13 @@ button {
   /* DO NOT force display here */
 }
 
+/* ===============================
+   PHONE FIX — ALL VIDEOS
+   =============================== */
+@media (max-width: 768px) {
+  video {
+    object-fit: contain;   /* no cropping on phone */
+    background: black;     /* black borders if needed */
+  }
+}
 
