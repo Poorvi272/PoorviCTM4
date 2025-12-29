@@ -15,20 +15,23 @@ body {
    VIDEO — FINAL CINEMATIC SETUP
    =============================== */
 /* ===============================
-   VIDEO — FINAL CINEMATIC SETUP
+   VIDEO — TRUE FULLSCREEN (NO BARS)
    =============================== */
 video {
   position: fixed;
   top: 50%;
   left: 50%;
 
-  width: 100vw;
-  height: 100svh;              /* safest viewport unit for mobile */
+  min-width: 100vw;
+  min-height: 100svh;
+
+  width: auto;
+  height: auto;
 
   transform: translate(-50%, -50%);
 
-  object-fit: cover;           /* FULL SCREEN, NO BLACK BARS */
-  object-position: center;     /* center crop */
+  object-fit: cover;
+  object-position: center;
 
   background: black;
   z-index: -5;
@@ -165,13 +168,4 @@ button {
   /* DO NOT force display here */
 }
 
-/* ===============================
-   PHONE FIX — FIRST VIDEO ONLY
-   =============================== */
-@media (max-width: 768px) {
-  #intro-video-1 {
-    object-fit: contain;   /* no crop */
-    background: black;     /* intentional borders */
-  }
-}
 
