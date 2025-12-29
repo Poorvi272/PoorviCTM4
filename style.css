@@ -16,16 +16,13 @@ body {
    =============================== */
 video {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  inset: 0;
 
   width: 100vw;
-  height: 100dvh;              /* safest viewport unit for mobile */
+  height: 100dvh;            /* respects mobile nav bar */
 
-  transform: translate(-50%, -50%);
-
-  object-fit: cover;           /* FULL SCREEN, NO BLACK BARS */
-  object-position: center;     /* center crop */
+  object-fit: contain;       /* NO CROPPING ANYWHERE */
+  object-position: center;
 
   background: black;
   z-index: -5;
