@@ -11,15 +11,21 @@ body {
 /* ===============================
    VIDEO — RESPONSIVE & SAFE
    =============================== */
+/* ===============================
+   VIDEO — FINAL CINEMATIC SETUP
+   =============================== */
 video {
   position: fixed;
-  inset: 0;
+  top: 50%;
+  left: 50%;
 
   width: 100vw;
-  height: 100dvh;            /* respects mobile nav bar */
+  height: 100svh;              /* safest viewport unit for mobile */
 
-  object-fit: contain;       /* NO CROPPING ANYWHERE */
-  object-position: center;
+  transform: translate(-50%, -50%);
+
+  object-fit: cover;           /* FULL SCREEN, NO BLACK BARS */
+  object-position: center;     /* center crop */
 
   background: black;
   z-index: -5;
