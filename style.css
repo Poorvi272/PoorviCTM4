@@ -1,44 +1,47 @@
-body {
+/* ===============================
+   BASE
+   =============================== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
   margin: 0;
+  padding: 0;
   background: black;
   color: #e50914;
   font-family: 'Cinzel', serif;
   text-transform: uppercase;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
-
 /* ===============================
-   VIDEO — RESPONSIVE & SAFE
-   =============================== */
-/* ===============================
-   VIDEO — FINAL CINEMATIC SETUP
-   =============================== */
-/* ===============================
-   VIDEO — TRUE FULLSCREEN (NO BARS)
+   VIDEO — TRUE FULLSCREEN (ALL DEVICES)
    =============================== */
 video {
   position: fixed;
   top: 50%;
   left: 50%;
 
-  min-width: 100vw;
-  min-height: 100svh;
-
-  width: auto;
-  height: auto;
+  width: 100vw;
+  height: 100vh;
 
   transform: translate(-50%, -50%);
 
-  object-fit: cover;
-  object-position: center;
+  object-fit: cover;          /* FULL SCREEN — NO BLACK BARS */
+  object-position: center;    /* CENTER CROPPING */
 
   background: black;
   z-index: -5;
+
+  pointer-events: none;       /* prevents accidental taps */
 }
 
-
-/* TAP SCREEN */
+/* ===============================
+   TAP TO START
+   =============================== */
 #tap-to-start {
   position: fixed;
   inset: 0;
@@ -51,17 +54,22 @@ video {
   letter-spacing: 2px;
   z-index: 50;
   cursor: pointer;
+  text-align: center;
 }
 
-/* OVERLAY */
+/* ===============================
+   OVERLAY
+   =============================== */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.65);
+  background: rgba(0, 0, 0, 0.65);
   z-index: -3;
 }
 
-/* CONTENT */
+/* ===============================
+   CONTENT
+   =============================== */
 #content {
   position: fixed;
   inset: 0;
@@ -69,12 +77,12 @@ video {
   justify-content: center;
   align-items: center;
   z-index: 5;
-
-  /* ADD THIS */
   visibility: hidden;
 }
 
-
+/* ===============================
+   SCREEN BOX
+   =============================== */
 .screen {
   text-align: center;
   padding: 28px 30px;
@@ -92,21 +100,29 @@ video {
   animation: float 6s ease-in-out infinite;
 }
 
-
-.hidden {
-  display: none;
+/* ===============================
+   TEXT
+   =============================== */
+.big {
+  font-size: 30px;
 }
 
-.big { font-size: 30px; }
-.story { font-size: 17px; margin: 12px auto; }
+.story {
+  font-size: 17px;
+  margin: 12px auto;
+}
 
+/* ===============================
+   INPUTS & BUTTONS
+   =============================== */
 input,
 button {
   width: 100%;
   max-width: 320px;
-  box-sizing: border-box;
+  padding: 12px;
+  margin-top: 14px;
+  font-family: inherit;
 }
-
 
 button {
   background: #e50914;
@@ -115,23 +131,36 @@ button {
   cursor: pointer;
 }
 
+/* ===============================
+   EFFECTS
+   =============================== */
+.hidden {
+  display: none;
+}
+
 .glitch {
   animation: flicker 1.4s infinite;
 }
 
 @keyframes flicker {
-  0%,100% { opacity:1; }
-  50% { opacity:0.6; }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
 }
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
 /* ===============================
-   ROTATE TO LANDSCAPE (FINAL FIX)
+   ROTATE TO LANDSCAPE
    =============================== */
 #rotate-warning {
   position: fixed;
   inset: 0;
   background: black;
   color: #e50914;
-  font-family: 'Cinzel', serif;
   font-size: 22px;
   letter-spacing: 2px;
 
@@ -143,29 +172,23 @@ button {
   z-index: 10000;
 }
 
-/* PHONE IN PORTRAIT */
+/* PHONE — PORTRAIT */
 @media (orientation: portrait) {
   #rotate-warning {
     display: flex;
   }
 
-  /* FORCE HIDE EVERYTHING ELSE */
   #tap-to-start,
   video,
   #content,
   .overlay {
     display: none !important;
-    visibility: hidden !important;
   }
 }
 
-/* PHONE IN LANDSCAPE */
+/* PHONE — LANDSCAPE */
 @media (orientation: landscape) {
   #rotate-warning {
     display: none;
   }
-
-  /* DO NOT force display here */
 }
-
-
